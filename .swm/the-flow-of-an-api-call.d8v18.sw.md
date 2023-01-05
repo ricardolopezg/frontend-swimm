@@ -1,8 +1,8 @@
 ---
 id: d8v18
 name: The flow of an API call
-file_version: 1.0.2
-app_version: 0.8.4-0
+file_version: 1.1.0
+app_version: 1.0.2
 file_blobs:
   static/app/views/dataExport/dataDownload.tsx: 1d5a818c7040d31c720f1aa24093d1fdb84a4ae7
   static/app/routes.tsx: ea6f39f35818df39dae826d476d068f9e8b212d9
@@ -22,7 +22,7 @@ In this walkthrough we will follow the example of a button allowing the user to 
 
 <br/>
 
-Starting with the frontend, we can see that the `Button`[<sup id="1etPl3">↓</sup>](#f-1etPl3) calls the api endpoint `data-export`[<sup id="2kDqDj">↓</sup>](#f-2kDqDj).
+Starting with the frontend, we can see that the `Button`<swm-token data-swm-token=":static/app/views/dataExport/dataDownload.tsx:197:2:2:`          &lt;Button`"/> calls the api endpoint `data-export`<swm-token data-swm-token=":static/app/views/dataExport/dataDownload.tsx:200:15:17:`            href={`/api/0/organizations/${orgId}/data-export/${dataExportId}/?download=true`}`"/>.
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
 ### 📄 static/app/views/dataExport/dataDownload.tsx
 ```tsx
@@ -62,7 +62,7 @@ The route to this view is defined in `📄 static/app/routes.tsx` :
 
 <br/>
 
-This API call should now be handled by an endpoint. For that, the `url`[<sup id="Z5Bup9">↓</sup>](#f-Z5Bup9) is registered here. The snippet below links the relevant `url`[<sup id="Z5Bup9">↓</sup>](#f-Z5Bup9) with the endpoint `DataExportDetailsEndpoint`[<sup id="Z1lxMWQ">↓</sup>](#f-Z1lxMWQ) :
+This API call should now be handled by an endpoint. For that, the `url`<swm-token data-swm-token=":src/sentry/api/urls.py:859:1:1:`                url(`"/> is registered here. The snippet below links the relevant `url`<swm-token data-swm-token=":src/sentry/api/urls.py:859:1:1:`                url(`"/> with the endpoint `DataExportDetailsEndpoint`<swm-token data-swm-token=":src/sentry/api/urls.py:861:1:1:`                    DataExportDetailsEndpoint.as_view(),`"/> :
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
 ### 📄 src/sentry/api/urls.py
 ```python
@@ -81,7 +81,7 @@ This API call should now be handled by an endpoint. For that, the `url`[<sup id=
 
 <br/>
 
-This endpoint is defined here, and can handle `GET`[<sup id="14QWtH">↓</sup>](#f-14QWtH) requests - with the `get`[<sup id="1QqruT">↓</sup>](#f-1QqruT) handler:
+This endpoint is defined here, and can handle `GET`<swm-token data-swm-token=":src/sentry/data_export/endpoints/data_export_details.py:42:5:5:`        if request.GET.get(&quot;download&quot;) is not None and data_export._get_file() is not None:`"/> requests - with the `get`<swm-token data-swm-token=":src/sentry/data_export/endpoints/data_export_details.py:20:3:3:`    def get(self, request: Request, organization: Organization, data_export_id: str) -&gt; Response:`"/> handler:
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
 ### 📄 src/sentry/data_export/endpoints/data_export_details.py
 ```python
@@ -93,7 +93,7 @@ This endpoint is defined here, and can handle `GET`[<sup id="14QWtH">↓</sup>](
 
 <br/>
 
-Recall that on the frontend we passed the parameter `download`[<sup id="1IC52a">↓</sup>](#f-1IC52a) :
+Recall that on the frontend we passed the parameter `download`<swm-token data-swm-token=":static/app/views/dataExport/dataDownload.tsx:200:23:23:`            href={`/api/0/organizations/${orgId}/data-export/${dataExportId}/?download=true`}`"/> :
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
 ### 📄 static/app/views/dataExport/dataDownload.tsx
 ```tsx
@@ -126,8 +126,8 @@ Here the endpoint parses this param and continues accordingly.
 
 <br/>
 
-Note that we use `MockApiClient.addMockResponse`[<sup id="Z1BHn7c">↓</sup>](#f-Z1BHn7c) to mock API calls. This function returns a jest mock that represents `request`[<sup id="1iyUif">↓</sup>](#f-1iyUif) calls.  
-For our case, we need to add an `organization`[<sup id="ZAwQtR">↓</sup>](#f-ZAwQtR), so we use `TestStubs.Organization`[<sup id="23pCIP">↓</sup>](#f-23pCIP) to generate a stub one.
+Note that we use `MockApiClient.addMockResponse`<swm-token data-swm-token=":tests/js/spec/views/dataExport/dataDownload.spec.jsx:15:1:3:`    MockApiClient.addMockResponse({`"/> to mock API calls. This function returns a jest mock that represents `request`<swm-token data-swm-token=":src/sentry/data_export/endpoints/data_export_details.py:20:8:8:`    def get(self, request: Request, organization: Organization, data_export_id: str) -&gt; Response:`"/> calls.<br/>
+For our case, we need to add an `organization`<swm-token data-swm-token=":tests/js/spec/views/dataExport/dataDownload.spec.jsx:9:3:3:`  const organization = TestStubs.Organization();`"/>, so we use `TestStubs.Organization`<swm-token data-swm-token=":tests/js/spec/views/dataExport/dataDownload.spec.jsx:9:7:9:`  const organization = TestStubs.Organization();`"/> to generate a stub one.
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
 ### 📄 tests/js/spec/views/dataExport/dataDownload.spec.jsx
 ```javascript
@@ -151,10 +151,10 @@ For our case, we need to add an `organization`[<sup id="ZAwQtR">↓</sup>](#f-ZA
 
 <br/>
 
-We can then test the the UI, like so.  
-Note that we use `mockRouteParams`[<sup id="Z204lpQ">↓</sup>](#f-Z204lpQ) on `mountWithTheme`[<sup id="Z1YTDDF">↓</sup>](#f-Z1YTDDF), that is, the `mockRouteParams`[<sup id="ELJfJ">↓</sup>](#f-ELJfJ) that were initiated in the previous snippet. We use `mountWithTheme`[<sup id="Z1YTDDF">↓</sup>](#f-Z1YTDDF) here so that `DataDownload`[<sup id="1YG1Wz">↓</sup>](#f-1YG1Wz) gets wrapped with a `<ThemeProvider>`.
+We can then test the the UI, like so.<br/>
+Note that we use `mockRouteParams`<swm-token data-swm-token=":tests/js/spec/views/dataExport/dataDownload.spec.jsx:69:15:15:`    const wrapper = mountWithTheme(&lt;DataDownload params={mockRouteParams} /&gt;);`"/> on `mountWithTheme`<swm-token data-swm-token=":tests/js/spec/views/dataExport/dataDownload.spec.jsx:69:7:7:`    const wrapper = mountWithTheme(&lt;DataDownload params={mockRouteParams} /&gt;);`"/>, that is, the `mockRouteParams`<swm-token data-swm-token=":tests/js/spec/views/dataExport/dataDownload.spec.jsx:10:3:3:`  const mockRouteParams = {`"/> that were initiated in the previous snippet. We use `mountWithTheme`<swm-token data-swm-token=":tests/js/spec/views/dataExport/dataDownload.spec.jsx:69:7:7:`    const wrapper = mountWithTheme(&lt;DataDownload params={mockRouteParams} /&gt;);`"/> here so that `DataDownload`<swm-token data-swm-token=":tests/js/spec/views/dataExport/dataDownload.spec.jsx:69:10:10:`    const wrapper = mountWithTheme(&lt;DataDownload params={mockRouteParams} /&gt;);`"/> gets wrapped with a `<ThemeProvider>`.
 
-Here we validate that given a `Valid`[<sup id="8hgnV">↓</sup>](#f-8hgnV) status, the button appears as expected.
+Here we validate that given a `Valid`<swm-token data-swm-token=":tests/js/spec/views/dataExport/dataDownload.spec.jsx:67:9:9:`    const status = DownloadStatus.Valid;`"/> status, the button appears as expected.
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
 ### 📄 tests/js/spec/views/dataExport/dataDownload.spec.jsx
 ```javascript
@@ -185,7 +185,7 @@ Here we validate that given a `Valid`[<sup id="8hgnV">↓</sup>](#f-8hgnV) statu
 
 <br/>
 
-To test the Endpoint itself, we create a class that inherits from `APITestCase`[<sup id="MRYuz">↓</sup>](#f-MRYuz) :
+To test the Endpoint itself, we create a class that inherits from `APITestCase`<swm-token data-swm-token=":tests/sentry/data_export/endpoints/test_data_export_details.py:14:4:4:`class DataExportDetailsTest(APITestCase):`"/> :
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
 ### 📄 tests/sentry/data_export/endpoints/test_data_export_details.py
 ```python
@@ -228,94 +228,4 @@ And then we can test the actual data being returned
 
 <br/>
 
-<!-- THIS IS AN AUTOGENERATED SECTION. DO NOT EDIT THIS SECTION DIRECTLY -->
-### Swimm Note
-
-<span id="f-MRYuz">APITestCase</span>[^](#MRYuz) - "tests/sentry/data_export/endpoints/test_data_export_details.py" L14
-```python
-class DataExportDetailsTest(APITestCase):
-```
-
-<span id="f-1etPl3">Button</span>[^](#1etPl3) - "static/app/views/dataExport/dataDownload.tsx" L197
-```tsx
-          <Button
-```
-
-<span id="f-2kDqDj">data-export</span>[^](#2kDqDj) - "static/app/views/dataExport/dataDownload.tsx" L200
-```tsx
-            href={`/api/0/organizations/${orgId}/data-export/${dataExportId}/?download=true`}
-```
-
-<span id="f-1YG1Wz">DataDownload</span>[^](#1YG1Wz) - "tests/js/spec/views/dataExport/dataDownload.spec.jsx" L69
-```javascript
-    const wrapper = mountWithTheme(<DataDownload params={mockRouteParams} />);
-```
-
-<span id="f-Z1lxMWQ">DataExportDetailsEndpoint</span>[^](#Z1lxMWQ) - "src/sentry/api/urls.py" L861
-```python
-                    DataExportDetailsEndpoint.as_view(),
-```
-
-<span id="f-1IC52a">download</span>[^](#1IC52a) - "static/app/views/dataExport/dataDownload.tsx" L200
-```tsx
-            href={`/api/0/organizations/${orgId}/data-export/${dataExportId}/?download=true`}
-```
-
-<span id="f-1QqruT">get</span>[^](#1QqruT) - "src/sentry/data_export/endpoints/data_export_details.py" L20
-```python
-    def get(self, request: Request, organization: Organization, data_export_id: str) -> Response:
-```
-
-<span id="f-14QWtH">GET</span>[^](#14QWtH) - "src/sentry/data_export/endpoints/data_export_details.py" L42
-```python
-        if request.GET.get("download") is not None and data_export._get_file() is not None:
-```
-
-<span id="f-Z1BHn7c">MockApiClient.addMockResponse</span>[^](#Z1BHn7c) - "tests/js/spec/views/dataExport/dataDownload.spec.jsx" L15
-```javascript
-    MockApiClient.addMockResponse({
-```
-
-<span id="f-ELJfJ">mockRouteParams</span>[^](#ELJfJ) - "tests/js/spec/views/dataExport/dataDownload.spec.jsx" L10
-```javascript
-  const mockRouteParams = {
-```
-
-<span id="f-Z204lpQ">mockRouteParams</span>[^](#Z204lpQ) - "tests/js/spec/views/dataExport/dataDownload.spec.jsx" L69
-```javascript
-    const wrapper = mountWithTheme(<DataDownload params={mockRouteParams} />);
-```
-
-<span id="f-Z1YTDDF">mountWithTheme</span>[^](#Z1YTDDF) - "tests/js/spec/views/dataExport/dataDownload.spec.jsx" L69
-```javascript
-    const wrapper = mountWithTheme(<DataDownload params={mockRouteParams} />);
-```
-
-<span id="f-ZAwQtR">organization</span>[^](#ZAwQtR) - "tests/js/spec/views/dataExport/dataDownload.spec.jsx" L9
-```javascript
-  const organization = TestStubs.Organization();
-```
-
-<span id="f-1iyUif">request</span>[^](#1iyUif) - "src/sentry/data_export/endpoints/data_export_details.py" L20
-```python
-    def get(self, request: Request, organization: Organization, data_export_id: str) -> Response:
-```
-
-<span id="f-23pCIP">TestStubs.Organization</span>[^](#23pCIP) - "tests/js/spec/views/dataExport/dataDownload.spec.jsx" L9
-```javascript
-  const organization = TestStubs.Organization();
-```
-
-<span id="f-Z5Bup9">url</span>[^](#Z5Bup9) - "src/sentry/api/urls.py" L859
-```python
-                url(
-```
-
-<span id="f-8hgnV">Valid</span>[^](#8hgnV) - "tests/js/spec/views/dataExport/dataDownload.spec.jsx" L67
-```javascript
-    const status = DownloadStatus.Valid;
-```
-
-<br/>
-
-This file was generated by Swimm. [Click here to view it in the app](https://app.swimm.io/repos/Z2l0aHViJTNBJTNBc2VudHJ5JTNBJTNBc3dpbW1pbw==/docs/d8v18).
+This file was generated by Swimm. [Click here to view it in the app](https://app.swimm.io/repos/Z2l0aHViJTNBJTNBZnJvbnRlbmQtc3dpbW0lM0ElM0FyaWNhcmRvbG9wZXpn/docs/d8v18).
