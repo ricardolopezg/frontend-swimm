@@ -1,6 +1,6 @@
 ---
 id: d8v18
-title: The flow of an API calls
+title: The flow of an API call
 file_version: 1.1.2
 app_version: 1.8.5
 ---
