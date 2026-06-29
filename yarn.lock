@@ -2852,15 +2852,28 @@
     htmlparser2 "^4.1.0"
     title-case "^3.0.2"
 
-"@sentry/browser@6.18.1-beta.0":
-  version "6.18.1-beta.0"
-  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-6.18.1-beta.0.tgz#136d281f53558bbbb56ab0dac753702c5ffea770"
-  integrity sha512-v5eoSJVTBDJFA3PYgdMwcNpGtRylxuVPVSfTu2uYzmba/V9atSx3T8M6lAFxfqo9jJoEp9WWrsb30gG522GB7A==
+"@sentry/browser-utils@10.62.0":
+  version "10.62.0"
+  resolved "https://registry.yarnpkg.com/@sentry/browser-utils/-/browser-utils-10.62.0.tgz#b75ff44f77980744bafd2fa94642c00c23b84c2b"
+  integrity sha512-mS9HVVuWIdye9o0xUGFmzNOBqktF4n5kugrF8NCOYYDrr5ZV8Cx7BlquHQn5UpCeViVhZtcDlEm4iOK7++Px7A==
   dependencies:
-    "@sentry/core" "6.18.1-beta.0"
-    "@sentry/types" "6.18.1-beta.0"
-    "@sentry/utils" "6.18.1-beta.0"
-    tslib "^1.9.3"
+    "@sentry/core" "10.62.0"
+
+"@sentry/browser@10.62.0":
+  version "10.62.0"
+  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-10.62.0.tgz#9bf41b5cfaafcdf75970475a72a883c03bde76a7"
+  integrity sha512-uJi0yPssB3Nt/cZ8/S8opW42gaM59/6IyNtPFYD7C0ciudi/nIo5QMVpCYBBI3jnKFOIQLlsMT4pDlOLuxxNuQ==
+  dependencies:
+    "@sentry/browser-utils" "10.62.0"
+    "@sentry/core" "10.62.0"
+    "@sentry/feedback" "10.62.0"
+    "@sentry/replay" "10.62.0"
+    "@sentry/replay-canvas" "10.62.0"
+
+"@sentry/core@10.62.0":
+  version "10.62.0"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-10.62.0.tgz#73a4a8bcdded6d741d6cf58bfd055c1b60b3fe10"
+  integrity sha512-tV69fMg2sS5DUFmQSnS7Jd5qJAp0izxwcsvBVz2ieTM9VMRi99IfOSYW9UYr3p1yfuksk41kefN5PEbeedUE+A==
 
 "@sentry/core@6.18.1-beta.0":
   version "6.18.1-beta.0"
@@ -2872,6 +2885,13 @@
     "@sentry/types" "6.18.1-beta.0"
     "@sentry/utils" "6.18.1-beta.0"
     tslib "^1.9.3"
+
+"@sentry/feedback@10.62.0":
+  version "10.62.0"
+  resolved "https://registry.yarnpkg.com/@sentry/feedback/-/feedback-10.62.0.tgz#440bfb5690be9c70ec1edb2291a08ed3f98c8d36"
+  integrity sha512-d0BVjJVny6qpBgGJgWL0fbcoQHjtD3z3R8EK/KzTS3RO92JX5n3A536n5D/rh0gZFgcIwiUzBXegmyPOSQn9ng==
+  dependencies:
+    "@sentry/core" "10.62.0"
 
 "@sentry/hub@6.18.1-beta.0":
   version "6.18.1-beta.0"
@@ -2915,22 +2935,34 @@
     lru_map "^0.3.3"
     tslib "^1.9.3"
 
-"@sentry/react@6.18.1-beta.0":
-  version "6.18.1-beta.0"
-  resolved "https://registry.yarnpkg.com/@sentry/react/-/react-6.18.1-beta.0.tgz#f2634880ea332b7aabf476a11dbb75fe222ad7f2"
-  integrity sha512-NMXJCEWCG4ZvmYgnWQIKAq9AIov3+2pCVNBFCNHbQ/A9i93QQM9cVAMeZLRqddoJ33NyXzjpIOK7VkfVvS7wLQ==
+"@sentry/react@10.62.0":
+  version "10.62.0"
+  resolved "https://registry.yarnpkg.com/@sentry/react/-/react-10.62.0.tgz#0ea654b9f7080d183b5b223ac2295fe3449b5a0d"
+  integrity sha512-PChimVpY0wzs3H/hJqyl87/ITTHwIZWTSY68QoENZyLnp7DvLcFiZYub/gFws1pzDPhtIQXVLU72fbmUjT5PSg==
   dependencies:
-    "@sentry/browser" "6.18.1-beta.0"
-    "@sentry/minimal" "6.18.1-beta.0"
-    "@sentry/types" "6.18.1-beta.0"
-    "@sentry/utils" "6.18.1-beta.0"
-    hoist-non-react-statics "^3.3.2"
-    tslib "^1.9.3"
+    "@sentry/browser" "10.62.0"
+    "@sentry/core" "10.62.0"
 
 "@sentry/release-parser@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@sentry/release-parser/-/release-parser-1.3.0.tgz#8175b835bede83346728e329bf226d80c1063653"
   integrity sha512-m6yuQTI8XiT+L7ELbCzqPRhBvSQ5Go3YTPzj2socm9Aekp3Jcze0ZlNJIqvuPPmuysmF+SOM849WYN47kM9ERg==
+
+"@sentry/replay-canvas@10.62.0":
+  version "10.62.0"
+  resolved "https://registry.yarnpkg.com/@sentry/replay-canvas/-/replay-canvas-10.62.0.tgz#0ce22ef5786b7d012c3003dc2289d86d12ea1dc0"
+  integrity sha512-CzPAxmpe5US/ABGA1TzpjFKOFZN5uqlzrRh/uM9/daVuzLVKIAQ0XRNxo/PPEXvlDm/PoMdI5L0qIODuIKnyyw==
+  dependencies:
+    "@sentry/core" "10.62.0"
+    "@sentry/replay" "10.62.0"
+
+"@sentry/replay@10.62.0":
+  version "10.62.0"
+  resolved "https://registry.yarnpkg.com/@sentry/replay/-/replay-10.62.0.tgz#66455f7c02b227244b02a78523b7578d339531de"
+  integrity sha512-rWp4hBhZOmdQhisxcKzAwTGiRk/LvWnNaElWe7nbRhjsM/usp2095yfjq4iJ47v9MtO7xxY6eUz++fLBycqXKg==
+  dependencies:
+    "@sentry/browser-utils" "10.62.0"
+    "@sentry/core" "10.62.0"
 
 "@sentry/rrweb@^0.3.1":
   version "0.3.1"
@@ -9044,7 +9076,7 @@ hoist-non-react-statics@^1.2.0:
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
   integrity sha1-qkSM8JhtVcxAdzsXF0t90GbLfPs=
 
-hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.1, hoist-non-react-statics@^3.3.2:
+hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.1:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
